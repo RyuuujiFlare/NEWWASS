@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Average Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+        h1 {
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #004d40;
+        }
+        input[type="number"], input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Grade Average Calculator</h1>
+        <div class="input-field">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" placeholder="Enter student name">
+        </div>
+        <div class="input-field">
+            <label for="section">Section</label>
+            <input type="text" id="section" placeholder="Enter section">
+        </div>
+        <div class="input-field">
+            <label for="grade1">Comprog (1-5)</label>
+            <input type="number" id="grade1" min="1" max="5" placeholder="Enter grade for Comprog">
+        </div>
+        <div class="input-field">
+            <label for="grade2">STS (1-5)</label>
+            <input type="number" id="grade2" min="1" max="5" placeholder="Enter grade for STS">
+        </div>
+        <div class="input-field">
+            <label for="grade3">Web System (1-5)</label>
+            <input type="number" id="grade3" min="1" max="5" placeholder="Enter grade for Web System">
+        </div>
+        <div class="input-field">
+            <label for="grade4">FITT (1-5)</label>
+            <input type="number" id="grade4" min="1" max="5" placeholder="Enter grade for FITT">
+        </div>
+        <div class="input-field">
+            <label for="grade5">GNED 01 (1-5)</label>
+            <input type="number" id="grade5" min="1" max="5" placeholder="Enter grade for GNED 01">
+        </div>
+        <button onclick="calculateAverage()">Calculate Average</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateAverage() {
+            let studentName = document.getElementById('studentName').value;
+            let section = document.getElementById('section').value;
+            let grade1 = parseFloat(document.getElementById('grade1').value);
+            let grade2 = parseFloat(document.getElementById('grade2').value);
+            let grade3 = parseFloat(document.getElementById('grade3').value);
+            let grade4 = parseFloat(document.getElementById('grade4').value);
+            let grade5 = parseFloat(document.getElementById('grade5').value);
+
+            if (!studentName || !section || isNaN(grade1) || isNaN(grade2) || isNaN(grade3) || isNaN(grade4) || isNaN(grade5)) {
+                document.getElementById('result').innerText = 'Please enter all fields.';
+                return;
+            }
+
+            let average = (grade1 + grade2 + grade3 + grade4 + grade5) / 5;
+            document.getElementById('result').innerText = `${studentName} from section ${section}, your average grade is: ${average.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
